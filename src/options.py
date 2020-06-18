@@ -28,6 +28,7 @@ option_dicts = [
                     Leave empty to use the current directory.
                 """,
         "type": "directory",
+        "value": "",
         "enabled": True,
         "required": True,
         "group": "other",

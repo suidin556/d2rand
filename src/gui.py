@@ -142,6 +142,9 @@ def start():
             break
         if event == "RANDOMIZE":
             options.update_options(values)
+            if options.DIABLO_PATH.value == "":
+                sg.popup("Diablo Path can not be empty")
+                continue
             try:
                 do()
             except Exception as e:

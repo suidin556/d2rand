@@ -15,6 +15,8 @@ from .options import options
 
 
 def do():
+    files.clear_out_files()
+
     seed_o = options.FIXED_SEED
     if seed_o.enabled:
         seed = seed_o.value
@@ -37,8 +39,7 @@ def do():
     try:
         files.copy_data_dir(d2path)
     except Exception as e:
-        print("ERROR. Could not copy the data dir to {}.\
-            You can try to copy it manually from the 'files/out/' folder".format(d2path))
+        print("ERROR. Could not copy the data dir to {}.".format(d2path))
     else:
         print("Successfully copied data dir to {}.".format(d2path))
 

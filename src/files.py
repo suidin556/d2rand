@@ -1,6 +1,6 @@
 import os
 import csv
-from shutil import copytree
+from shutil import copytree, rmtree
 from collections import defaultdict
 
 from . import APP_ROOT
@@ -15,10 +15,28 @@ TXT_DIR = os.path.join(APP_ROOT, "files/in/txt/")
 DATA_DIR = os.path.join(APP_ROOT, "files/out/data/")
 EXCEL_DIR = os.path.join(DATA_DIR, "global/excel")
 
+
+def clear_directory_files(directory):
+    filelist = [ f for f in os.listdir(directory)]
+    for f in filelist:
+        os.remove(os.path.join(directory, f))
+
+def clear_out_files():
+    clear_directory_files(EXCEL_DIR)
+
+def clear_d2_data(d2path):
+    if d2path.split() == "":
+        return
+    rmtree(os.path.join(d2path, "data/global/excel/"))
+
 def copy_data_dir(d2path):
     if options.DEBUG.enabled:
         print("DEBUG")
         return
+    try:
+        clear_d2_data(d2path)
+    except Exception:
+        pass
     copytree(DATA_DIR, os.path.join(d2path, "data"), dirs_exist_ok=True)
 
 
