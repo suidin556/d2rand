@@ -168,7 +168,7 @@ class Table:
             print("DEBUG")
             return
         path = os.path.join(EXCEL_DIR, "{}.txt".format(self.FILE_NAME))
-        with open(path, "w", encoding="cp1252") as f:
+        with open(path, "w", encoding="cp1252", newline="") as f:
             tsv_writer = csv.writer(f, delimiter="\t")
             tsv_writer.writerow(self.header)
             tsv_writer.writerows(self.rows)
