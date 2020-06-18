@@ -1,0 +1,13 @@
+__pycache__
+/build/
+/dist/
+.~lock*
+/.venv/
+/files/out/
+/files/forlater
+/data/
+/example/
+*.pyc
+*.TODO
+TODO
+last_settings.json
