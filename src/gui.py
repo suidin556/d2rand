@@ -5,6 +5,7 @@ from collections import defaultdict
 import PySimpleGUI as sg
 
 from .options import options
+from . import utils
 from .randomize import do
 
 
@@ -130,7 +131,7 @@ start_btn = sg.Button(
     key="START_D2",
     enable_events=True,
 )
-layout.append([randomize_btn, start_btn])
+layout.append([randomize_btn, start_btn] + utils.flatten(groups["start_options"]))
 
 def start():
     window = sg.Window('D2 Randomizer', layout, resizable=True)
@@ -162,10 +163,12 @@ def start():
             if not os.path.isfile(game_exe_path):
                 sg.popup("Diablo II.exe could not be found.")
                 continue
-            # p = subprocess.Popen([game_exe_path, "-txt", "-direct"])
+            start_options = [game_exe_path, "-txt", "-direct"]
+            if values["WINDOW_MODE"]:
+                start_options.append("-w")
             with open(os.devnull, 'r+b', 0) as DEVNULL:
                 p = subprocess.Popen(
-                    [game_exe_path, "-w", "-txt", "-direct"],
+                    start_options,
                     stdin=DEVNULL, stdout=DEVNULL, stderr=DEVNULL, close_fds=True, cwd=d2path
                 )
 

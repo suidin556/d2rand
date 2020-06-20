@@ -24,8 +24,7 @@ option_dicts = [
     {
         "name": "DIABLO_PATH",
         "desc": """
-                    Path to put the generated data folder. Usually your Diablo II path.
-                    Leave empty to use the current directory.
+                    Path to put the generated data folder. Usually the path to your Diablo II folder.
                 """,
         "type": "directory",
         "value": "",
@@ -90,7 +89,9 @@ option_dicts = [
     },
     {
         "name": "MIX_MONSTER_LOCATIONS",
-        "desc": "Mixes groups of monsters for each area. Bosses are excluded.",
+        "desc": """
+                    Mixes groups of monsters for each area in a (somewhat) balanced way.
+                """,
         "group": "random",
         "type": bool,
         "enabled": False,
@@ -224,6 +225,14 @@ option_dicts = [
         "type": bool,
         "enabled": False,
     },
+    {
+        "name": "WINDOW_MODE",
+        "display_name": "-w",
+        "desc": "Start in window mode",
+        "group": "start_options",
+        "type": bool,
+        "enabled": True,
+    },
 ]
 
 class OptionRequired(Exception):
@@ -232,6 +241,7 @@ class OptionRequired(Exception):
 class Option:
     def __init__(self, d):
         self.name = d["name"]
+        self.display_name = d.get("display_name")
         self.desc = re.sub("(\s)\s+", "\g<1>", d["desc"].strip())
         self.type = d["type"]
         self.group = d.get("group")
@@ -269,6 +279,9 @@ class Option:
 
     @property   
     def readable_name(self):
+        dn = getattr(self, "display_name", None)
+        if dn:
+            return dn
         parts = self.name.lower().split("_")
         parts = [p.capitalize() for p in parts]
         return " ".join(parts)

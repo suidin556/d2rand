@@ -17,7 +17,7 @@ EXCEL_DIR = os.path.join(DATA_DIR, "global/excel")
 
 
 def clear_directory_files(directory):
-    filelist = [ f for f in os.listdir(directory)]
+    filelist = [ f for f in os.listdir(directory) if f.endswith(".txt")]
     for f in filelist:
         os.remove(os.path.join(directory, f))
 

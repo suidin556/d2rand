@@ -135,7 +135,7 @@ def randomize_levels():
     if options.MIX_MONSTER_LOCATIONS.enabled:
         print("Mixing Monster Locations")
         l = levels.Levels()
-        l.mix_monsters_in_areas()
+        l.mix_all_monster_locations()
     if options.INCREASE_MONSTER_DENSITY.enabled:
         print("Increasing monster density")
         l = l or levels.Levels()
