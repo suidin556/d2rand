@@ -4,7 +4,7 @@ It doesn't change any game files. Only a "data" folder with the modified .txt fi
 Make sure there are no important files in your data/global/excel/ folder, because that folder will be deleted before every randomization (based on your choosen Diablo Path).
 
 ## Starting d2rand
-Windows builds are under "Releases" and will not always be up to date.
+Windows builds can be found under [Releases](https://github.com/suidin556/d2rand/releases) and will not always be up to date.
 If you have Python installed, you can always just run the newest version:
 ```
 pip install -r requirements.txt
