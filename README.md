@@ -1,3 +1,7 @@
+> This project will not be updated anymore.
+> Please check out [D2Modmaker](https://github.com/tlentz/d2modmaker), an active and more feature rich tool for diablo2 randomization/modding
+
+
 # Randomizer tool for Diablo II
 This is a tool to randomize and alter various values of Diablo II by using its build-in modding capabilities.
 It doesn't change any game files. Only a "data" folder with the modified .txt files will be created and copied to the specified Diablo II folder.

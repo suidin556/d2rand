@@ -68,6 +68,7 @@ def randomize_items():
         print("Mixing Rune Properties")
         i = items.Runes()
         i.mix_props()
+        i.write()
 
 
     if options.UNIQUE_DROP_MULTIPLIER.enabled:
