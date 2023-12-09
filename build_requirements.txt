@@ -1,2 +1,2 @@
-PyInstaller==3.6
+PyInstaller==5.13.1
 PySimpleGUI==4.20.0
